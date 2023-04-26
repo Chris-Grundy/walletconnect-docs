@@ -73,7 +73,7 @@ With both options defined, you can initialize and connect the SDK.
 
 ```csharp
 var dappClient = await WalletConnectSignClient.Init(dappOptions);
-var connectData = await dappClient.Connect(dappConnectOptions);
+var connectData = await dappClient.Connect(dappConnectOptions1);
 ```
 
 You can grab the `Uri` for the connection request from `connectData`.
@@ -85,11 +85,11 @@ ExampleShowQRCode(connectData.Uri);
 Then await connection approval using the `Approval` Task object.
 
 ```csharp
-Task<SessionData> sessionConnectTask = connectData.Approval;
-SessionData sessionData = await sessionConnectTask;
+Task<SessionStruct> sessionConnectTask = connectData.Approval;
+SessionStruct sessionData = await sessionConnectTask;
 
 // or
-// SessionData sessionData = await connectData.Approval;
+// SessionStruct sessionData = await connectData.Approval;
 ```
 
 This `Task` will return the `SessionData` when the session was approved, or throw an exception when the session rquest has either
